@@ -1,6 +1,4 @@
-//Source https://github.com/atapas/youtube/tree/main/react/20-useTransition/user-finder-transition
-//https://blog.greenroots.info/explain-react-18-usetransition-hook-with-examples
-
+//to Run code paste this in app.js file
 import OnlyOneInstanceCounter from './Pattrens/SingletonCounter';
 
 export default function App(){
