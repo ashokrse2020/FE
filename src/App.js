@@ -1,24 +1,33 @@
-//Source https://github.com/atapas/youtube/tree/main/react/20-useTransition/user-finder-transition
-//https://blog.greenroots.info/explain-react-18-usetransition-hook-with-examples
+//https://www.patterns.dev/posts/proxy-pattern
+//https://javascriptpatterns.vercel.app/patterns/design-patterns/proxy-pattern
+let person = {
+  name: 'Ashok',
+  age: 29,
+  nationality: 'india'
+}
 
-import OnlyOneInstanceCounter from './Pattrens/SingletonCounter';
+const personProxy = new Proxy(person, {
+  get: (obj, path) => {
+    return Reflect.get(obj, 'path');
+  },
+  set: (obj, path, value) => {
+    return Reflect.set(obj, path, value);
+  }
+})
+
+person.name = 'inspire';
+person.age = 24;
+console.log("Person Name is", person.name);
+console.log("Person age is", person.age);
+console.log("Person nationality is", person.nationality);
 
 export default function App(){
-  const handleClickForRedButton = () => {
-    OnlyOneInstanceCounter.increment();
-    console.log("Ashok counter value", OnlyOneInstanceCounter.getCount());
-  }
-
-  const handleClickForBlueButton = () => {
-    OnlyOneInstanceCounter.increment();
-    console.log("Ashok counter value", OnlyOneInstanceCounter.getCount());
-  }
 
   return (
   <div>
-    <p>Hello, world!</p>
-      <button onClick={handleClickForRedButton}>{'Red Button'}</button>
-      <button onClick={handleClickForBlueButton}>{'Blue Button'}</button>
+    <p>{`Person Name is ${person.name}`}</p>
+    <p>{`Person age is ${person.age}`}</p>
+    <p>{`Person nationality is ${person.nationality}`}</p>
   </div>
   );
 }
